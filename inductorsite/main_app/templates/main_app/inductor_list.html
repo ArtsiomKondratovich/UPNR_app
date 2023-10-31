@@ -5,7 +5,7 @@
 <div>Список всех индукторов:</div>
 {% for post in posts %}
 <p>
-    {{ post.id}}
+    <a href="{% url 'ind_detail' post.id %}">{{ post.id}}</a>
 </p>
 {% endfor %}
 

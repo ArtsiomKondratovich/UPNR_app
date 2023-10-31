@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>Форма для создания индуктора</h1>
-<form action="{% url 'add_ind' %}" method="post">
+<form action="{% url 'add_ind' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
   {{ form.as_p}}
     <input type="submit" value=ok />

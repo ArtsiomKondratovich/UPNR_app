@@ -17,6 +17,9 @@ class TubeShapes(models.Model):
 class Machines(models.Model):
     power_of_machine = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.power_of_machine} kWt'
+
 
 class Inductors(models.Model):
     title = models.CharField(max_length=50)
@@ -28,6 +31,7 @@ class Inductors(models.Model):
     tube_shape = models.ForeignKey(TubeShapes, on_delete=models.CASCADE, blank=True)
     len_of_tube = models.IntegerField(default=150)
     notice = models.CharField(max_length=250, blank=True)
+    photo = models.FileField(upload_to='media/', blank=True)
 
     def __str__(self):
         return self.title
@@ -36,8 +40,8 @@ class Inductors(models.Model):
         return f'ind/{self.pk}'
 
 class TestInductor(models.Model):
-    inductor_id = models.OneToOneField(Inductors, on_delete=models.CASCADE)
-    machine_id = models.OneToOneField('Machines', on_delete=models.CASCADE)
+    inductor_id = models.ForeignKey(Inductors, on_delete=models.CASCADE)
+    machine_id = models.ForeignKey('Machines', on_delete=models.CASCADE)
     detail = models.CharField(max_length=50)
     power = models.IntegerField()
     voltage = models.IntegerField()
@@ -45,4 +49,4 @@ class TestInductor(models.Model):
     freq = models.DecimalField(max_digits=3, decimal_places=1)
 
     def __str__(self):
-        return f'{self.inductor} #{self.pk}'
+        return f'{self.inductor_id} #{self.pk}'

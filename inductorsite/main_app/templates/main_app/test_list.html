@@ -1,0 +1,12 @@
+{% extends 'main_app/main.html' %}
+
+{% block content %}
+
+<div>Список всех испытаний:</div>
+{% for test in tests %}
+<p>
+    <a href="">{{ test.id}}</a>
+</p>
+{% endfor %}
+
+{% endblock %}

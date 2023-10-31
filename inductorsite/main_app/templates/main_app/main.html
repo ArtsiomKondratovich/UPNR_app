@@ -6,10 +6,13 @@
 </head>
 <body>
 <div>
-    <a href="{% url 'main' %}">Главная</a>
+    <div style="background-color:aliceblue;padding:25px;border: 1px solid #333; " align="middle" >
+        <a style="color:green;C" href="{% url 'main' %}">Главная</a>
+    </div>
+
     <a href="{% url 'add_ind' %}">Создать индуктор</a>
     <a href="{% url 'list_inds' %}">Выбрать индуктор</a>
-    <a href="{% url 'main' %}">Выбрать испытание</a>
+    <a href="{% url 'list_tests' %}">Выбрать испытание</a>
 
 </div>
 {% block content %}
